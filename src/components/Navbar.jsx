@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 
 const Navbar = () => {
-  const productData = useSelector(state => state.count)
+  const productData = useSelector(state => state.stateCount.count)
 
   return (
     <nav>

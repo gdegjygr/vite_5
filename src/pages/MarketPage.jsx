@@ -2,6 +2,8 @@ import axios from "axios"
 import React, {useState, useEffect} from "react"
 import { useDispatch } from "react-redux"
 import { countAction } from "../store/counerAction"
+import { basketAction } from "../store/basketAction"
+import "../pages/Market.css"
 
 
 const MarketPage = () => {
@@ -17,8 +19,9 @@ const MarketPage = () => {
 
     const dispatch = useDispatch()
 
-    const handleSubmit = () => {
+    const handleSubmit = (selectProduct) => {
         dispatch(countAction())
+        dispatch(basketAction({payload: selectProduct}))
     }
 
   return (
@@ -33,7 +36,7 @@ const MarketPage = () => {
                 <p>rating: {item.rating}</p>
                 <p>brand: {item.brand}</p>
                 <p>category: {item.category}</p>
-                <button onClick={handleSubmit}>BUY</button>
+                <button onClick={() => handleSubmit(item)}>BUY</button>
             </div>
         ))}
     </div>

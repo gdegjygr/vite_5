@@ -1,4 +1,10 @@
-import { legacy_createStore as createStore} from "redux";
+import { legacy_createStore as createStore, combineReducers} from "redux";
 import countReducer from "./countReducer";
+import basketReducer from "./basketReducer";
 
-export const store = createStore(countReducer)
+const rootReducer = combineReducers({
+    stateCount: countReducer,
+    stateProduct: basketReducer
+})
+
+export const store = createStore(rootReducer)
